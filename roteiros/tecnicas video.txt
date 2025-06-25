@@ -1,0 +1,22 @@
+Clonar e selecionar branches do projeto
+https://youtu.be/s9URD3PefTk?t=63
+
+Exemplos de mostrar linha de comando:
+https://youtu.be/s9URD3PefTk?t=112
+https://youtu.be/s9URD3PefTk?t=240
+
+Ao clicar em localhost
+https://youtu.be/s9URD3PefTk?t=173
+
+O que é template e script
+https://youtu.be/s9URD3PefTk?t=402
+
+Mostrar mudanças no código e projeto
+https://youtu.be/s9URD3PefTk?t=458
+
+javascript dentro de duas chaves
+https://youtu.be/s9URD3PefTk?t=527
+
+
+como funciona v-for:
+https://youtu.be/s9URD3PefTk?t=1155

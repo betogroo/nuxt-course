@@ -1,0 +1,77 @@
+Todo
+
+Criar page e link
+Create composable with array list
+Add v-for [aqui mostrar que o vscode não autocompleta a lista]
+Create Type
+	create interface
+	difine list ref is List [explicar que o erro é pq a variavel criada é um array de List
+	define list ref is List[]
+	adcionar um item à lista [mostrar como o ts aucompleta] [mostrar erros ts] [neste momento, mostra o ctrl shift seta para baixo]
+Create v-list
+	Mostrar com o mouse sobre list que é do tipo List
+	[Explicar como o v-for percorre os itens]
+	item.name apenas
+	start v-list
+		começar utilizando o laço v-for
+		title e prepend-icon e mostrar ação click
+		adicionar índice, e retornar
+		criar togleCheck no composable, e condicionar o icone obs: aqui o title ainda deve ser na propriedade. colocar no template apenas quando for formatar como riscado.
+		condicionar cores e estilo de texto e add riple
+		refatorar usando id como indice
+		criar computed checkedList e unchecked
+			substiruir list por unchecked e adicionar o checked
+			[criar com return e depois tirar o return, para frizar]
+			[neste ponto, vamos mostrar que o código está grande, e repetitivo, então vamos criar o compoennte List
+	criar o componente list
+		explicar qe na versão 4 temos a pasta component
+		criar o componente sem nada e colocar na página
+		copiar todo o v-list para o componente e mostrar onde estão os erros de variaveis não encontradas, etc
+		criar a prop list, do tipo list
+		passar a função toggle para o component [aqui vai dar erro, pois o compoente não pode alterar a prop[ ver gepeto]
+		criar emit
+		criar title no compoente. [mostrar que o campo é obrigatório e vai dar erro se não tiver na invocação]
+		condicionar a visualização, onde só aparece se tem itens no array
+	adcionar nova tarefa
+		alterar tipo do id para uuid
+		criar formulario com text-field e um botão e envolver todo a página em m container
+		criar uma função que envia o conteurdo do formulario no log
+		finalizar a função, explicando as duas formas, conforme [gepeto arquivo push ou tres pontinhos ou unshift]
+		explicar que ao atualizar as informações voltam ao padrão, e por isso uma das opções é utilizar local storage ou pinia
+		instalar vueuse
+		aplicar useStorage
+		Adicionar valor default apenas manualmente -> ver reatividade no  texto gepeto
+		Adicionar botão para apagar todos os registros, com confirmação de exclusão. pode ser um poss[ível componente]
+		Bug fix 
+		hydratation
+			Mostrar o erro de hydration [exlicar] e como consertar com o initOnMounted
+	Refactoring Time
+		mensagem de não há itens dentro do proprio compoennte (TodoList) texto no gepeto
+		encapsular botão de exclusão ver texto no gepeto
+		refatorar adcionar tarefa
+Desafio
+	Counter
+		usar local storage
+		alterar max entry:
+			fazer tudo na propria page, e depois colocar no composable [fazer tipo uma animação separando o que é controlado na page, e o que é no composable, separanfo a logiga do modal da logica do composable
+			
+	Todo
+		No todo adiconar função para selecionar todos ou nenhum
+		Adicionar apagar tarefa específica]
+			Adicionar o botão no append e colocar uma função para nmostrar que ao clicar no botão, o click do list item tambénm será clicado. Mostrar que o click.stop evita a propagação para o componente pai
+			criar emit
+			criar a função no composable
+
+
+###TERNMIADO - PROVAVELMENTE DUAS AULAS
+
+Lsta do que foi aprendido aqui:
+
+
+	
+		
+		
+		
+		
+		
+	

@@ -1,0 +1,51 @@
+Exatamente! ✅
+
+Tanto `push` quanto `unshift` **adicionam um novo item no array**, mas a **diferença está na posição** em que o item entra:
+
+---
+
+### 🟩 `push(newItem)`
+
+* **Adiciona no final** do array.
+* Exemplo:
+
+  ```ts
+  const arr = [1, 2, 3]
+  arr.push(4)
+  console.log(arr) // [1, 2, 3, 4]
+  ```
+
+---
+
+### 🟦 `unshift(newItem)`
+
+* **Adiciona no início** do array.
+* Exemplo:
+
+  ```ts
+  const arr = [1, 2, 3]
+  arr.unshift(0)
+  console.log(arr) // [0, 1, 2, 3]
+  ```
+
+---
+
+### 🧠 Ambos:
+
+* São **reativos no Vue** (ou `useStorage` com `ref`).
+* São **eficientes**, pois modificam o array original (sem recriar um novo).
+
+---
+
+### ✅ Quando usar cada um?
+
+| Deseja que o item mais recente apareça... | Use...      |
+| ----------------------------------------- | ----------- |
+| No topo da lista (primeiro)               | `unshift()` |
+| No final da lista (último)                | `push()`    |
+
+---
+
+Se estiver exibindo os itens com `v-for`, o comportamento visual muda com base em qual deles você usou, mesmo que a lógica interna seja igual.
+
+Se quiser, posso sugerir uma visualização prática disso no seu template.

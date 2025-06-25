@@ -1,0 +1,217 @@
+Você deve ter um conhecimento básico de JavaScript e Vue.js, pois o Nuxt 3 é construído com base nessas tecnologias. Familiaridade com a sintaxe ES6, a API de composição do Vue e conceitos como programação assíncrona seriam particularmente úteis. É recomendável que você tenha Node.js.
+
+versão node
+versão npm
+vscode recomendado
+
+
+Convenções [colocar todas aqui]
+
+Capitulo 1
+Configurando ambiente e construindo app base
+
+Neste capitulo:
+parte 1
+instalar nuxt
+adicionar configurações do vscode
+configurar eslint
+limpar projeto
+preparar para v4
+Primeira página: home page
+segunda página: about
+	[mostrar na barra de endereços]
+criar menu [criar nas duas pages]
+teoria sobre layouts
+criar layout default, com menu
+
+parte 2
+instalar o vuetify
+v-app, v-main e v-container
+estilizar menu
+utilizar v-app-bar
+projeto base pronto
+
+
+
+
+
+usando nvm use 22.15.0
+npm install -g npm@11.3.0
+
+
+npm create nuxt <project-name> or
+npx nuxi@latest init <project-name> ???
+	escolha npm
+	escolha eslint
+	
+	Observações: falar que o aluno pode usr o gerenciador de sua preferencia, como pnp, yarn, etc
+	
+	
+	
+  
+  clone .vscode submodule
+		git submodule add https://github.com/betogroo/vscode .vscode ou
+		entrar em https://github.com/betogroo/vscode e baixar o submodulo
+		
+	eslint rules
+	
+	future: {
+    compatibilityVersion: 4,
+  },
+  
+  Como a versão 4 está prestes a ser lançada (ou já lançada enquanto o curso é elaborado) o nuxt nos permite utilizar a versão 3 em modo de compatibilidade com a versão 4. para isso, basta adicionar esta configuração no nuxt.config.ts
+  
+  Uma das novidades da versão 4, é que todo o código estará em uma pasta chamada app. Então, vamos criar esta pasta na raiz do projetoe mover o arquivo app.vue para ela.
+  
+  
+  app.vue on app folder
+  
+  agora rode o comand npm run dev, e acesso o enredereço em seu navegador, ou clique no link do terminal segurando a tecla ctrl
+  [mostrar as duas opções]
+  
+  Descrever a página que abriu.
+  Você verá uma páginas de boas vindas ao nuxt, com alguns links para exemplos, modulos e documenteção. Esta página está mostrando o componente <NuxtWelcome />, nativo do nuxt. Vamos removê-lo, juntamente com o <NuxtRouteAnnouncer />,  que é um componente que anuncia a mudança de rota para usuarios que dependem de leitores de tela. Por enquanto não vamos abordá-lo, então é seguro removê-lo. A partir de agora, nossa página não tem conteudo algum. Vamos limpar o projeto, removendo estes compnentes
+  
+  ### Remover componentens
+  
+  [explicar conceitos de rotas, como index sendo a rota padrão, e a outra o nome do arquivo]
+  
+ Vamos criar a pasta pages, onde ficarão todas as nossas páginas vue. Crie uma pasta pages, dentro da past app. Dentro dela, crie um arquivo index.vue, que será a nossa home page. com o seguinte conteúdo:
+ 
+ <template>
+  <div><h1>Home Page</h1></div>
+</template>
+
+Logo após, deixe o app.vue conforme segue:
+
+<template>
+  <NuxtPage />
+</template>
+
+Desta forma, ao acessarmos a raiz de nosso site : http://localhost:3000/ o nuxt identifca dentro da pasta pages pela rota padrão, ("/") que corresponde ao arquivo index.vue. Ainda falando sobre rotas, vamos criar mais um arquivo, dentro de pages, com o nome de about.vue
+
+<template>
+  <div><h1>About</h1></div>
+</template>
+
+Com isso criamos outra rota: "/about". Se você digitar no navegador http://localhost:3000/about, verá que acessamos uma nova página. Uma maneira de visualizr suas rotas, para monitorar, encontrar erros é através do Nuxt Dev Tools, que já é instalado quando criamos nosso projeto no nuxt.
+
+Para acessar você pode usar o atalho Ctrl + Shift + D ou clicar no ícone, bem abaixo no seu navegador [mostrar icone e mostrar abrindo].
+[ver roteiro no Gepeto]
+
+vamos criar o menu para navegar entra as páginas:
+
+adicionar nas duas páginas:
+
+<nav>
+   <ul>
+        <li><nuxt-link to="/">Home</nuxt-link></li>
+        <li><nuxt-link to="/about">About</nuxt-link></li>
+      </ul>
+    </nav>
+
+
+Como dá perceber, repetimos o mesmo código em duas páginas diferentes. Porém o vue nos oferece maneiras de melhorar isto, deixando o código mais enxuto e conciso. Uma das maneiras seria separar a parque que será repetida em componentes. Porém para este caso, utilizaremos um recurso do nuxt que é a criação de layouts
+
+Agora vamos ver o funcionamento dos templates
+
+Ver no Gepeto e criar uma animação explicando. A animação pode ser focando a parte em comum dos layouts de toda as páginas.
+Depois disso, criar o layout default, já com um menu simples, utilizando ul>li
+
+ 
+ add menu on template:
+ <template>
+  <div>
+    <nav>
+      <ul>
+        <li><nuxt-link to="/">Home</nuxt-link></li>
+        <li><nuxt-link to="/about">About</nuxt-link></li>
+      </ul>
+    </nav>
+    <slot />
+  </div>
+</template>
+
+
+
+Aqui completamos o primeiro passo, que é um sistem rodando, totalmente compativel com o nuxt 4, com pages, utilizando layout e com um menu para navegação. E agora? Bom, Vamos continuar a aprender os conceitos do nuxt, porém, a gente não precisa criar apps com a cara feia, sem formatação, tudo no padrão. Vamos a partir de agora começar a usar os componentes e features do vuetify. O que é o vuietify? [Ver no Gepeto]
+
+
+
+
+
+install vuetify
+	
+	através de modulos ou
+	
+	npm install vuetify-nuxt-module@latest -D --ignore-scripts
+	vuetify-nuxt-module
+	
+	Observe que a página mudou a formatação, removendo os icones da lista, e formato das fonte.
+	
+	explicar v-app e v-main [Gepeto]
+	
+	Então, para começar, vamos configrar a aplicação. No arquivo default na pasta layouts, vamos utilizar tais componentes:
+	v-app, engloba, como explicacto, engloba todo o sistema. todo o conteudo de nossa aplicação ficará dentro das tags v-app [alterar a tag div para v-app. neste momento, pode mostrar o funcionamento da extensão Auto Rename Tag
+	 
+	envolver em v-app e v-main e v-container
+	[ao envolver o slot, explicar o funcionamento do emmet]
+	
+	mostrar no navegador que agora temos padding e margin, [ver certinho tudo o que muda na visualização]
+	
+	
+	Vamos dar uma melhorada, utilizando umas das Utility Class do Vuetify, o d-flex. o d-flex nada mais é do que o flex do css.
+	
+	Para exemplficar, vamos alterar nossa barra de menu:
+	
+	apague ul e li [pode ser uma boa hora para ensinar o ctrl+d]
+	
+	
+	e estilize assim,  e explique todas as classes o que fazem
+	
+	<template>
+  <v-app>
+    <nav class="d-flex justify-center ga-3 bg-primary">
+      <nuxt-link
+        class="text-decoration-none text-white"
+        to="/"
+        >Home</nuxt-link
+      >
+      <nuxt-link
+        class="text-decoration-none text-white"
+        to="/about"
+        >About</nuxt-link
+      >
+    </nav>
+    <v-main>
+      <v-container>
+        <slot />
+      </v-container>
+    </v-main>
+  </v-app>
+</template>
+
+Já deu outra cara para nossa barra de navegação. Porém, o vuetify nos auxilia com vários componentes prontos. Um deles, bem útil é o app-bar, que nada mais é que uma barra de navegação. Vamos construir uma
+
+
+e depois melhorar:
+
+ <v-app-bar color="primary">
+      <v-app-title>My Nuxt App</v-app-title>
+      <v-spacer />
+      <v-btn
+        text
+        to="/"
+        >Home</v-btn
+      >
+      <v-btn
+        text
+        to="/about"
+        >About</v-btn
+      >
+    </v-app-bar>
+	
+	[explicar o compontente e subcomponentes]
+	
+	
+Como observamos, nossa aplicação está tomando uma cara profissional. De agora  em  diante, como é um dos focos do curso, todos os componentes serão desenvolvidos utilizando o vuetify. A partir de agora vamos aprender todos os conceitos de vue, nuxt, vuetify, typescript, e outras tecnolgias, como supabase e pinia, construindo aplicativos. Começando com aplicativos simples, depois vamos refatorar, melhorando o código e colocando mais recursos, até chegar em uma aplicação de grande porte.

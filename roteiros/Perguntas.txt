@@ -1,0 +1,24 @@
+Por que usar nvm?
+Por que usar TS?
+Por que usar nomes de variáveis, funções etc. em ingles?
+
+O que é Vue Dev Tools?
+
+O que é CSpell e para que utilizar
+
+por que clonar a pasta .vscode?
+
+Quais são as extensões do vscode a utilizar?
+
+Quais as covenções do Nuxt, Vue, TS,
+
+O que é Supabase
+
+
+
+
+Por que desenvolver um 	TODO, já não está saturado?
+
+
+
+
