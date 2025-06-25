@@ -1,0 +1,111 @@
+Perfeito! O comportamento padrão do `<v-navigation-drawer>` no Vuetify, quando você **não usa o `v-model`**, é:
+
+* **Desktop (largura grande)**: o drawer aparece aberto por padrão (modo "permanente").
+* **Mobile (largura pequena)**: o drawer fica fechado por padrão (modo "temporary").
+
+---
+
+### O problema ao usar `v-model`
+
+Quando você define um `v-model` manualmente (ex: `v-model="nav"`), o Vuetify **deixa de controlar esse comportamento responsivo automático**. O controle passa a ser **100% seu**, ou seja, o Vuetify vai apenas respeitar o valor booleano do `nav`.
+
+---
+
+### Soluções para manter o comportamento responsivo, mesmo com `v-model`
+
+#### ✅ Opção 1: Usar o prop `permanent` ou `temporary` de forma reativa com `useDisplay` do Vuetify (mais recomendado)
+
+Assim você controla se o drawer é `permanent` ou `temporary` dependendo do tamanho da tela.
+
+Exemplo:
+
+```ts
+<script setup lang="ts">
+import { useDisplay } from 'vuetify'
+
+interface NavItem {
+  title: string
+  route: string
+  icon: string
+}
+
+const navItems: NavItem[] = [
+  { title: 'Home', route: '', icon: 'mdi-home-account' },
+  { title: 'Limitador de Acessos', route: 'counter', icon: 'mdi-counter' },
+  { title: 'Todo', route: 'todo', icon: 'mdi-format-list-checks' },
+  { title: 'About', route: 'about', icon: 'mdi-information' },
+]
+
+const nav = ref(false)
+const toggleDrawer = () => {
+  nav.value = !nav.value
+}
+
+// Detectar tamanho da tela
+const { mdAndUp } = useDisplay()
+
+// Controlar se o drawer deve ser permanente
+const isPermanent = computed(() => mdAndUp.value)
+
+// Definir o valor inicial do drawer baseado na tela
+onMounted(() => {
+  nav.value = isPermanent.value
+})
+</script>
+```
+
+E no template:
+
+```vue
+<v-navigation-drawer
+  v-model="nav"
+  :permanent="isPermanent"
+>
+```
+
+---
+
+#### ✅ Opção 2: Inicializar manualmente o `nav` no `onMounted`
+
+Se você quiser algo mais simples e não quiser usar `useDisplay`, pode apenas setar o `nav` assim:
+
+```ts
+onMounted(() => {
+  nav.value = window.innerWidth >= 960  // Por exemplo: acima de 960px = aberto
+})
+```
+
+Mas isso é menos flexível, pois não reage a mudanças de tamanho de tela depois.
+
+---
+
+### ✅ Resumo da melhor solução
+
+👉 **Se quiser comportamento dinâmico e reativo com o tamanho da tela:** Use `useDisplay()` + `computed` para o `permanent`.
+
+👉 **Se quiser só um estado inicial fixo com base na largura ao carregar:** Use `window.innerWidth` dentro de `onMounted`.
+
+---
+
+### Exemplo completo com a solução reativa (recomendado):
+
+```vue
+<v-navigation-drawer
+  v-model="nav"
+  :permanent="isPermanent"
+>
+```
+
+Com:
+
+```ts
+const { mdAndUp } = useDisplay()
+const isPermanent = computed(() => mdAndUp.value)
+onMounted(() => {
+  nav.value = isPermanent.value
+})
+```
+
+---
+
+Se quiser, posso te mandar o código completo com as duas soluções lado a lado, quer?
