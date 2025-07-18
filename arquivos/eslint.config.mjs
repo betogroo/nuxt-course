@@ -1,25 +1,30 @@
-// @ts-check
 import withNuxt from './.nuxt/eslint.config.mjs'
+import prettierPlugin from 'eslint-plugin-prettier'
 
 export default withNuxt({
+  plugins: {
+    prettier: prettierPlugin,
+  },
   rules: {
-    'vue/valid-v-slot': [
+    // roda o Prettier como regra do ESLint
+    'prettier/prettier': [
       'error',
       {
-        allowModifiers: true,
+        semi: false,
+        singleQuote: true,
+        trailingComma: 'all',
+        printWidth: 100,
+        bracketSameLine: false,
+        vueIndentScriptAndStyle: true,
       },
     ],
-    'vue/block-order': [
-      'error',
-      {
-        order: ['script[setup]', 'template', 'style'],
-      },
-    ],
+
+    // suas regras Vue / TS existentes
+    'vue/valid-v-slot': ['error', { allowModifiers: true }],
+    'vue/block-order': ['error', { order: ['script[setup]', 'template', 'style'] }],
     'vue/define-macros-order': [
       'error',
-      {
-        order: ['defineOptions','defineProps', 'defineEmits'],
-      },
+      { order: ['defineOptions', 'defineProps', 'defineEmits'] },
     ],
     'vue/attributes-order': [
       'error',
@@ -40,21 +45,19 @@ export default withNuxt({
         alphabetical: true,
       },
     ],
-    'vue/max-attributes-per-line': [
+    'vue/max-attributes-per-line': 'off',
+    /*  'vue/max-attributes-per-line': [
       'error',
       {
-        singleline: {
-          max: 1,
-        },
-        multiline: {
-          max: 1,
-        },
+        singleline: { max: 1 },
+        multiline: { max: 1 },
       },
-    ],
+    ], */
     'vue/no-multiple-template-root': 'off',
     'vue/multi-word-component-names': 'off',
   },
 })
+
 
 
 Esse arquivo configura o ESLint para um projeto Nuxt com regras específicas para Vue, garantindo um estilo de código consistente e boas práticas. Aqui está uma explicação linha a linha de cada regra definida:
