@@ -4,16 +4,18 @@
 **Requisitos:**
 
 ✅ Conhecimentos básicos em Javascript, Typescript, Vue 3
-✅ VSCode
-✅ Node: '22.17.0'
+✅ VSCode com a extensão oficial do Vue
+✅ NuxtR - Testar
+✅ Recomendado Node: '22.17.0' (Mínimo 20.x)
 ✅ NPM: 11.4.2
 
-#### ✅ Instalação do `nuxt 3 ou 4`
+#### ✅ Instalação do `nuxt 4`
 
 **Cena 1:**  
 📺 Instalar o nuxt através do `npm create`
 
-🗣️ Vamos iniciar a criação do nosso projeto com o Nuxt. Para isso, utilizaremos o comando:
+🗣️ Vamos iniciar a criação do nosso projeto com o Nuxt. Para isso, abra o terminal (se está usando o VSCode você pode utilizar o terminal integrado) e digite o seguinte comando, para iniciar um novo projeto:
+
 ```bash
 npm create nuxt@latest curso-nuxt
 ```
@@ -67,6 +69,16 @@ Which package manager would you like to use?
 ◻ @nuxt/test-utils – Test utilities for Nuxt
 ◻ @nuxt/ui – The Intuitive UI Library powered by Reka UI and Tailwind CSS
 ```
+
+
+🗣️Será exibida uma mensagem parecida com essa. Significa que o projeto está pronto para uso.
+
+```bash
+✨ Nuxt project has been created with the v4 template. Next steps:
+ › cd nuxt-4-base
+ › Start development server with npm run dev
+```
+
 🗣️ Pronto, o nuxt já está instalado e pronto para uso. Entre na pasta do projeto
 ```bash
 cd curso-nuxt
